@@ -1,17 +1,25 @@
-// ATIVIDADE 4 (base da atividade 3)
-// ==============================
+const input = document.getElementById("input");
+const botao = document.getElementById("botao");
+const lista = document.getElementById("lista");
 
-// Dentro do evento de adicionar item:
+botao.addEventListener("click", function () {
+    const texto = input.value;
 
-// 1. Criar o botão de remover
-// → usar document.createElement()
+    const item = document.createElement("li");
+    item.textContent = texto;
+    lista.appendChild(item);
 
-// 2. Adicionar texto ao botão
-// → exemplo: "Remover" ou "X"
+    
+    const btnRemover = document.createElement("button");
+    btnRemover.textContent = "Remover";
 
-// 3. Adicionar evento de clique no botão
-// → quando clicar:
-//    - remover o item da lista (li.remove())
+    
+    btnRemover.addEventListener("click", function () {
+        lista.removeChild(item);
+    });
 
-// 4. Colocar o botão dentro do <li>
-// → usar appendChild()
+    item.appendChild(btnRemover);
+    lista.appendChild(item);
+
+    input.value = "";
+});
