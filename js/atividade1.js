@@ -1,7 +1,11 @@
-const elemento = document.getElementById('texto');
+const titulo = document.getElementById('titulo');
+const botao = document.getElementById('botao');
 
-if (elemento) {
-  elemento.addEventListener('click', () => {
-    elemento.textContent = 'Botao CLicado';
+
+  botao.addEventListener('click', function() {
+    if (titulo.innerText == "Apertei o título") {
+      titulo.innerText = "Sorvete galera";
+    } else {
+      titulo.innerText = "sapo veio";
+    }
   });
-}
