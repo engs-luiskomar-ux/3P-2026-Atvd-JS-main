@@ -1,25 +1,33 @@
-const input = document.getElementById("input");
-const botao = document.getElementById("botao");
-const lista = document.getElementById("lista");
+const input = document.getElementById('itemInput');
+const lista = document.getElementById('minhaLista');
 
-botao.addEventListener("click", function () {
-    const texto = input.value;
-
-    const item = document.createElement("li");
-    item.textContent = texto;
-    lista.appendChild(item);
-
+document.getElementById('btnAdicionar').addEventListener('click', function() {
     
-    const btnRemover = document.createElement("button");
-    btnRemover.textContent = "Remover";
+    if (input.value.trim() !== "") {
+       
+        const li = document.createElement('li');
+        li.innerText = input.value + " "; 
+        
+        const btnRemover = document.createElement('button');
 
-    
-    btnRemover.addEventListener("click", function () {
-        lista.removeChild(item);
-    });
+        btnRemover.innerText = "Remover";
 
-    item.appendChild(btnRemover);
-    lista.appendChild(item);
+        btnRemover.addEventListener('click', function() {
+            li.remove();
+        });
 
-    input.value = "";
+        
+        li.addEventListener('click', function() {
+            if (li.style.textDecoration === "line-through") {
+                li.style.textDecoration = "";
+            } else {
+                li.style.textDecoration = "line-through";
+            }
+        });
+
+        li.appendChild(btnRemover);
+        lista.appendChild(li);
+
+        input.value = "";
+    }
 });
